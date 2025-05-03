@@ -8,6 +8,7 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 sudo pacman -S git npm
 ```
 
+# Installation
 ```
 mkdir -p ~/.config/nvim
 git clone git@github.com:pundemia-dev/myNeovim.git ~/.config/nvim
