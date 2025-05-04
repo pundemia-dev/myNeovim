@@ -127,7 +127,13 @@ require("lazy").setup({
 	    config = function()
 	        -- Configuration goes here.
 	        local g = vim.g
-	
+            -- g.ale_virtualenv_dir_names = {'.venv', 'venv', 'env'}
+            -- g.ale_virtualenv_dir_names = {}
+            -- g.ale_python_mypy_auto_uv = 0--{ vim.env.VIRTUAL_ENV } 
+            -- g.ale_python_auto_uv = true
+            -- g.ale_python_auto_virtualenv = 1
+            local virtual = os.getenv("VIRTUAL_ENV") or os.getenv("CONDA_PREFIX") or "/usr"
+            g.ale_python_mypy_executable = virtual .. "/bin/python"
 	        g.ale_linters = {
 	        	python = {'mypy'},
 	            lua = {'lua_language_server'}
@@ -146,6 +152,7 @@ require("lazy").setup({
 
     -- ******************** Git integration ********************
     { 'lewis6991/gitsigns.nvim' },
+    { 'tpope/vim-fugitive' },
 
 	{ 'williamboman/mason.nvim' },
     -- higliting other uses of word

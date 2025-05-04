@@ -29,21 +29,6 @@ vim.keymap.set('n', '<leader>s', ':ToggleTerm direction=float<CR>')
 vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', {})
 vim.keymap.set('n', '<leader>gt', ':Gitsigns toggle_current_line_blame<CR>', {})
 
--- Python
--- uv run
-vim.api.nvim_create_autocmd('FileType', {
-
-    pattern = 'python',
-    callback = function()
-
-        vim.opt.colorcolumn = '88'
-        vim.keymap.set('n', '<C-h>', ':w<CR>:!uv run %<CR>', { buffer = true, silent = true })
-        vim.keymap.set('i', '<C-h>', '<Esc>:w<CR>:!uv run %<CR>', { buffer = true, silent = true })
-    end
-})
--- uv add
-
-
 -- C++
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'cpp',

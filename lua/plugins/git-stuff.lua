@@ -1,3 +1,1 @@
-require('gitsigns.nvim').setup({
-    
-})
+require('gitsigns').setup()
