@@ -1,0 +1,3 @@
+require('gitsigns.nvim').setup({
+    
+})

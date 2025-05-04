@@ -13,24 +13,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	
-	{ 'nvim-treesitter/nvim-treesitter' },
-	{ 'neovim/nvim-lspconfig' },
-
-	-- Autocomplete support
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/cmp-buffer' },
-	{ 'hrsh7th/cmp-path' },
-	{ 'hrsh7th/cmp-cmdline' },
-	{ 'hrsh7th/nvim-cmp' },
-	{ 'williamboman/mason.nvim' },
-
+    -- ******************** UI ********************
+    -- dashboard *****
     {
-		'nvim-telescope/telescope.nvim', tag = '0.1.6',
-		dependencies = { 'nvim-lua/plenary.nvim' }
-	},
-
-	{
 	  'nvimdev/dashboard-nvim',
 	  event = 'VimEnter',
 	  config = function()
@@ -40,100 +25,12 @@ require("lazy").setup({
 	  end,
 	  dependencies = { {'nvim-tree/nvim-web-devicons'}}
 	},
-
-	{ 'Eandrju/cellular-automaton.nvim' },
-	{ 'norcalli/nvim-colorizer.lua' },
-
-	{
-	    'nvim-lualine/lualine.nvim',
-	    dependencies = { 'nvim-tree/nvim-web-devicons' }
-	},
-
-	{
-	  "folke/todo-comments.nvim",
-	  dependencies = { "nvim-lua/plenary.nvim" },
-	  opts = {
-	    -- your configuration comes here
-	    -- or leave it empty to use the default settings
-	    -- refer to the configuration section below
-	  }
-	},
-
-	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000 },
-    { 
-        "rose-pine/neovim", name = "rose-pine",
-        config = function()
-            require("rose-pine").setup({styles = {transparency = true},})
-	end,
-    },
-    { "EdenEast/nightfox.nvim" },
-    {
-      "max397574/better-escape.nvim",
-      config = function()
-        require("better_escape").setup()
-      end,
-    },
-
-	{
-	    'numToStr/Comment.nvim',
-	    opts = {
-	        -- add any options here
-	    },
-	    lazy = false,
-	},
-
+    -- lualine *****
+    { 'nvim-lualine/lualine.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+    -- bufferline *****
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-
-	{
-	  "nvim-tree/nvim-tree.lua",
-	  version = "*",
-	  lazy = false,
-	  dependencies = {
-	    "nvim-tree/nvim-web-devicons",
-	  },
-	  config = function()
-	    require("nvim-tree").setup {}
-	  end,
-	},
-
-	{
-	    'dense-analysis/ale',
-	    config = function()
-	        -- Configuration goes here.
-	        local g = vim.g
-	
-	        g.ale_linters = {
-	        	python = {'mypy'},
-	            lua = {'lua_language_server'}
-	        }
-	    end
-	},
-
-	{ 'RRethy/vim-illuminate' },
-
-	{
-	    "vhyrro/luarocks.nvim",
-	    priority = 1001, -- this plugin needs to run before anything else
-	    opts = {
-	        rocks = { "magick" },
-	    },
-	},
-
-	{
-	 "folke/trouble.nvim",
-	 dependencies = { "nvim-tree/nvim-web-devicons" },
-	 opts = {
-	  -- your configuration comes here
-	  -- or leave it empty to use the default settings
-	  -- refer to the configuration section below
-	 },
-	},
-
-	{'akinsho/toggleterm.nvim', version = "*", config = true},
-
-	{
+    -- keymap *****
+    {
 	  "folke/which-key.nvim",
 	  event = "VeryLazy",
 	  init = function()
@@ -146,14 +43,123 @@ require("lazy").setup({
 	    -- refer to the configuration section below
 	  }
 	},
-
-	-- Выравнивание и перемещение текста
-	-- Автоматическое открытие фигурных скобок, кавычек и т.д
-	{ 'echasnovski/mini.nvim', version = false },
-	{ 'echasnovski/mini.move', version = false },
-	{ 'echasnovski/mini.pairs', version = false },
+    -- colorschemes *****
+    { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000 },
+    { "EdenEast/nightfox.nvim" },
+    { "rose-pine/neovim", name = "rose-pine", 
+      config = function()
+            require("rose-pine").setup({styles = {transparency = true},})
+	  end,
+    },
     
+    -- syntax color *****
+    { 'nvim-treesitter/nvim-treesitter' },
+
+    -- text animation
+    { 'Eandrju/cellular-automaton.nvim' },
+    
+    -- text color
+    { 'norcalli/nvim-colorizer.lua' },
+
+    -- smooth cursor *****
+    { 'sphamba/smear-cursor.nvim', opts = {}, },
+
+    -- ******************** Autocomplete ********************
+	{ 'hrsh7th/cmp-nvim-lsp' },
+	{ 'hrsh7th/cmp-buffer' },
+	{ 'hrsh7th/cmp-path' },
+	{ 'hrsh7th/cmp-cmdline' },
+	{ 'hrsh7th/nvim-cmp' },
+    { 'echasnovski/mini.nvim', version = false },
+    { 'echasnovski/mini.pairs', version = false },
+
+    -- ******************** Navigation ********************
+    -- treeview *****
+    {
+	  "nvim-tree/nvim-tree.lua",
+	  version = "*",
+	  lazy = false,
+	  dependencies = {
+	    "nvim-tree/nvim-web-devicons",
+	  },
+	  config = function()
+	    require("nvim-tree").setup {}
+	  end,
+	},
+    -- jk instead esc *****
+    {
+      "max397574/better-escape.nvim",
+      config = function()
+        require("better_escape").setup()
+      end,
+    },
+    -- fzf search in files *****
+    { 'nvim-telescope/telescope.nvim', tag = '0.1.6', dependencies = { 'nvim-lua/plenary.nvim' } },
+    -- move code *****
+    { 'echasnovski/mini.move', version = false },
+
+    -- ******************** Comments ********************
+    
+    {
+	  "folke/todo-comments.nvim",
+	  dependencies = { "nvim-lua/plenary.nvim" },
+	  opts = {
+	    -- your configuration comes here
+	    -- or leave it empty to use the default settings
+	    -- refer to the configuration section below
+	  }
+	},
+    {
+	    'numToStr/Comment.nvim',
+	    opts = {
+	        -- add any options here
+	    },
+	    lazy = false,
+	},
+
+    -- ******************** Code analysis ********************
+	{ 'neovim/nvim-lspconfig' },
+    -- Asynchronous Lint Engine
+    {
+	    'dense-analysis/ale',
+	    config = function()
+	        -- Configuration goes here.
+	        local g = vim.g
+	
+	        g.ale_linters = {
+	        	python = {'mypy'},
+	            lua = {'lua_language_server'}
+	        }
+	    end
+	},
+    {
+	    "folke/trouble.nvim",
+	    dependencies = { "nvim-tree/nvim-web-devicons" },
+	    opts = {
+	    -- your configuration comes here
+	    -- or leave it empty to use the default settings
+	    -- refer to the configuration section below
+	    },
+	},
+
+    -- ******************** Git integration ********************
+    { 'lewis6991/gitsigns.nvim' },
+
+	{ 'williamboman/mason.nvim' },
+    -- higliting other uses of word
+	{ 'RRethy/vim-illuminate' },
+	{
+	    "vhyrro/luarocks.nvim",
+	    priority = 1001, -- this plugin needs to run before anything else
+	    opts = {
+	        rocks = { "magick" },
+	    },
+	},
+    -- floating terminal
+	{'akinsho/toggleterm.nvim', version = "*", config = true},
     -- Авто-сейв
     { 'Pocco81/auto-save.nvim' },
-    { 'sphamba/smear-cursor.nvim', opts = {}, }
+    { 'benomahony/uv.nvim' }
 })

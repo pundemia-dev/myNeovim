@@ -25,6 +25,10 @@ vim.keymap.set('n', '<leader>nl', ':TodoTelescope<CR>')
 -- ToggleTerm
 vim.keymap.set('n', '<leader>s', ':ToggleTerm direction=float<CR>')
 
+-- Gitsigns
+vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', {})
+vim.keymap.set('n', '<leader>gt', ':Gitsigns toggle_current_line_blame<CR>', {})
+
 -- Python
 -- uv run
 vim.api.nvim_create_autocmd('FileType', {
