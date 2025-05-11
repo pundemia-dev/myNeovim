@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 --vim.keymap.set('n', '<C-q>', '<cmd>:q<CR>')
 
 -- Copy all text
-vim.keymap.set('n', '<C-a>', '<cmd>%y+<CR>')
+--vim.keymap.set('n', '<C-a>', '<cmd>%y+<CR>')
 
 -- Saving a file via Ctrl+S
 --vim.keymap.set('i', '<C-s>', '<cmd>:w<CR>')
@@ -20,7 +20,7 @@ vim.keymap.set('n','<S-Tab>', ':BufferLineCyclePrev<CR>')
 vim.keymap.set('n', '<C-l>', ':BufferLineCloseOthers<CR>')
 
 -- TodoList
-vim.keymap.set('n', '<leader>nl', ':TodoTelescope<CR>')
+-- vim.keymap.set('n', '<leader>nl', ':TodoTelescope<CR>')
 
 -- ToggleTerm
 vim.keymap.set('n', '<leader>s', ':ToggleTerm direction=float<CR>')
@@ -28,6 +28,9 @@ vim.keymap.set('n', '<leader>s', ':ToggleTerm direction=float<CR>')
 -- Gitsigns
 vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', {})
 vim.keymap.set('n', '<leader>gt', ':Gitsigns toggle_current_line_blame<CR>', {})
+
+-- vim.keymap.set('n', '<leader>ff',  Snacks.picker.smart(), {})
+
 
 -- C++
 vim.api.nvim_create_autocmd('FileType', {

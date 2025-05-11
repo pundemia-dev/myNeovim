@@ -53,19 +53,15 @@ require("lazy").setup({
             require("rose-pine").setup({styles = {transparency = true},})
 	  end,
     },
-    
     -- syntax color *****
     { 'nvim-treesitter/nvim-treesitter' },
-
     -- text animation
     { 'Eandrju/cellular-automaton.nvim' },
-    
     -- text color
     { 'norcalli/nvim-colorizer.lua' },
-
     -- smooth cursor *****
     { 'sphamba/smear-cursor.nvim', opts = {}, },
-
+    require("plugins.snacks"),
     -- ******************** Autocomplete ********************
 	{ 'hrsh7th/cmp-nvim-lsp' },
 	{ 'hrsh7th/cmp-buffer' },
@@ -96,7 +92,7 @@ require("lazy").setup({
       end,
     },
     -- fzf search in files *****
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.6', dependencies = { 'nvim-lua/plenary.nvim' } },
+    -- { 'nvim-telescope/telescope.nvim', tag = '0.1.6', dependencies = { 'nvim-lua/plenary.nvim' } },
     -- move code *****
     { 'echasnovski/mini.move', version = false },
 
