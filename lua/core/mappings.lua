@@ -38,4 +38,4 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.keymap.set('i', '<C-h>', '<Esc>:w<CR>:!g++ % -o %:r && ./%:r<CR>', { buffer = true, silent = true })
         -- vim.keymap.set('n', '<C-h>', ':w<CR>:!x86_64-w64-mingw32-g++ % -o %:r.exe && echo "Compiled to Windows executable: %:r.exe"<CR>', { buffer = true, silent = false })
     end
-})
+})Sidebar

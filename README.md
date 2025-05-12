@@ -12,5 +12,5 @@ sudo pacman -S git npm
 ```
 mkdir -p ~/.config/nvim
 git clone git@github.com:pundemia-dev/myNeovim.git ~/.config/nvim
-nvim -c "MasonInstall pyright ruff mypy debugpy"
+nvim -c "MasonInstall pyright ruff mypy debugpy lua-language-server rust-analyzer"
 ```
