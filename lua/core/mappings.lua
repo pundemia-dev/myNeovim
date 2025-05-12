@@ -19,11 +19,8 @@ vim.keymap.set('n','<Tab>', ':BufferLineCycleNext<CR>')
 vim.keymap.set('n','<S-Tab>', ':BufferLineCyclePrev<CR>')
 vim.keymap.set('n', '<C-l>', ':BufferLineCloseOthers<CR>')
 
--- TodoList
--- vim.keymap.set('n', '<leader>nl', ':TodoTelescope<CR>')
-
 -- ToggleTerm
-vim.keymap.set('n', '<leader>s', ':ToggleTerm direction=float<CR>')
+vim.keymap.set('n', '<leader>cf', ':ToggleTerm direction=float<CR>')
 
 -- Gitsigns
 vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', {})

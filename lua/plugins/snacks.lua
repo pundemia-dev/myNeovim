@@ -2,14 +2,16 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    icon = "",
     opts = {
         bigfile = { enabled = true },
         notifier = { enabled = true },
         quickfile = { enabled = true },
         input = { enabled = true },
         image = { enabled = true },
-        picker = { enabled = true }
+        picker = { enabled = true },
     },
+    styles = {icon = ""},
     keys = {
         -- Top Pickers & Explorer
         -- { "<Space>fs",  function() Snacks.picker.smart() end,                                   desc = "Smart Find Files" },
@@ -21,14 +23,14 @@ return {
         -- find
         -- { "<leader>fb", function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
         -- { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-        { "<Space>ff", function() Snacks.picker.files() end,                                                   desc = "Find Files" },
+        { "<Space>ff", function() Snacks.picker.files() end,                                                  desc = "Find Files"}, --icon="󰈞 " },
         -- { "<leader>fg", function() Snacks.picker.git_files() end,                               desc = "Find Git Files" },
         -- { "<leader>fp", function() Snacks.picker.projects() end,                                desc = "Projects" },
         -- { "<leader>fr", function() Snacks.picker.recent() end,                                  desc = "Recent" },
         -- git
         { "<Space>gb", function() Snacks.picker.git_branches() end,                                            desc = "Git Branches" },
-        { "<Space>gl", function() Snacks.picker.git_log() end,                                                 desc = "Git Log" },
-        { "<Space>gL", function() Snacks.picker.git_log_line() end,                                            desc = "Git Log Line" },
+        { "<Space>gc", function() Snacks.picker.git_log() end,                                                 desc = "Git Log" },
+        { "<Space>gl", function() Snacks.picker.git_log_line() end,                                            desc = "Git Log Line" },
         { "<Space>gs", function() Snacks.picker.git_status() end,                                              desc = "Git Status" },
         { "<Space>gS", function() Snacks.picker.git_stash() end,                                               desc = "Git Stash" },
         { "<Space>gd", function() Snacks.picker.git_diff() end,                                                desc = "Git Diff (Hunks)" },
@@ -36,7 +38,7 @@ return {
         -- Grep
         -- { "<leader>sb", function() Snacks.picker.lines() end,                                   desc = "Buffer Lines" },
         -- { "<leader>sB", function() Snacks.picker.grep_buffers() end,                            desc = "Grep Open Buffers" },
-        { "<Space>fg", function() Snacks.picker.grep() end,                                                    desc = "Grep" },
+        { "<Space>fg", function() Snacks.picker.grep() end},--                                                    desc = "󱎸 Grep" },
         -- { "<leader>sw", function() Snacks.picker.grep_word() end,                               desc = "Visual selection or word", mode = { "n", "x" } },
         -- search
         -- { '<leader>s"', function() Snacks.picker.registers() end,                               desc = "Registers" },
@@ -59,7 +61,7 @@ return {
         -- { "<leader>sq", function() Snacks.picker.qflist() end,                                  desc = "Quickfix List" },
         -- { "<leader>sR", function() Snacks.picker.resume() end,                                  desc = "Resume" },
         -- { "<leader>su", function() Snacks.picker.undo() end,                                    desc = "Undo History" },
-        { "<Space>c",  function() Snacks.picker.colorschemes() end,                                            desc = "Colorschemes" },
+        { "<Space>s",  function() Snacks.picker.colorschemes() end,                                            desc = "Colorschemes" },
         -- LSP
         -- { "gd",         function() Snacks.picker.lsp_definitions() end,                         desc = "Goto Definition" },
         -- { "gD",         function() Snacks.picker.lsp_declarations() end,                        desc = "Goto Declaration" },
@@ -69,7 +71,7 @@ return {
         -- { "<leader>ss", function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
         -- { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
         -- TODO
-        { "<Space>dt", function() Snacks.picker.todo_comments() end,                                           desc = "Todo" },
-        { "<Space>dT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,  desc = "Todo/Fix/Fixme" },
+        { "<Space>ft", function() Snacks.picker.todo_comments() end},--,                                           desc = "Todo" },
+        { "<Space>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end},--,  desc = "Todo/Fix/Fixme" },
     },
 }

@@ -1,8 +1,7 @@
 local lspconfig = require('lspconfig')
 
 -- typescript lsp
--- lspconfig.ts_ls.setup({}) typescript 
--- TODO: replace ts_ls to tsserver
+lspconfig.ts_ls.setup({}) --typescript 
 
 -- Rust lsp
 lspconfig.rust_analyzer.setup {
@@ -13,9 +12,9 @@ lspconfig.rust_analyzer.setup {
 }
 
 -- C++ lsp
--- lspconfig.clangd.setup({
+lspconfig.clangd.setup({
     -- capabilities = capabilities, 
--- })
+})
 
 lspconfig.pyright.setup{
     settings = {
@@ -52,20 +51,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set('n', 'lD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'ld', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'lk', vim.lsp.buf.hover, opts)
-    -- vim.keymap.set('n', 'i', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', 'li', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, opts)
     
-    -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-    -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    -- vim.keymap.set('n', '<space>wl', function()
-    --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    -- end, opts)
-    
+    vim.keymap.set('n', '<space>lwa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>lwr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>lwl', function()
+        local folders = vim.lsp.buf.list_workspace_folders()
+        local msg = vim.inspect(folders)
+        require("snacks.notifier").notify(msg, "info", { title = "LSP Workspace Folders", timeout=10000 })
+    end, opts)
     -- TODO: Используется повторно, необходимо вырезать в след.версии
     -- vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>r', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<space>f', function()
+    vim.keymap.set('n', 'lr', vim.lsp.buf.references, opts)
+    -- vim.api.nvim_create_autocmd("InsertLeave", {
+    --     pattern={ "*.py", "*.cpp", "*.h", "*.hpp", "*.rs", "*.cs", "*.ts", "*.tsx" },
+    --     callback=function()
+    --         vim.lsp.buf.format {async=true}
+    --     end,
+    -- })
+    vim.keymap.set('n', '<space>lf', function()
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
